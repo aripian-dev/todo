@@ -26,14 +26,18 @@ export class TodoService {
   }
 
   async findOne(id: number):Promise<FullResponseDto> {
-    return await this.taskModel.findOne({_id: id});
+    return await this.taskModel.findOne({id});
   }
 
   async update(id: number, updateTodoDto: UpdateTodoDto):Promise<FullResponseDto> {
-    return await this.taskModel.findOneAndUpdate({_id: id}, updateTodoDto);
+    return await this.taskModel.findOneAndUpdate({id}, updateTodoDto);
+  }
+
+  async updateStatus(id: number, status: string):Promise<FullResponseDto> {
+    return await this.taskModel.findOneAndUpdate({id}, {status});
   }
 
   async remove(id: number):Promise<null> {
-    return await this.taskModel.findOneAndDelete({_id: id});
+    return await this.taskModel.findOneAndDelete({id});
   }
 }

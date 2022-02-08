@@ -23,6 +23,7 @@ export class CreateTodoDto {
 	@ApiProperty({
 		required: true,
 		type: 'enum',
+		enum: taskStatusEnum,
 		description: 'task status',
 	})
 	status: taskStatusEnum;
